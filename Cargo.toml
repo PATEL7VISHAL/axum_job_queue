@@ -1,0 +1,28 @@
+[package]
+name = "job_queue"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+async-trait = "0.1.89"
+axum = "0.8.4"
+config = { version = "0.14", default-features = false, features = ["yaml"] }
+derive_more = { version = "2.0.1", features = ["from"] }
+serde = { version = "1", features = ["derive"] }
+serde-aux = "4.7.0"
+serde_json = "1"
+sqlb = "0.4.0"
+sqlx = { version = "0.7.3", default-features = false, features = [
+  "chrono",
+  # "macros",
+  "migrate",
+  "postgres",
+  "runtime-tokio-rustls",
+  "uuid"
+] }
+tokio = { version = "1", features = ["full"] }
+tracing = { version = "0.1.19", features = ["attributes"] }
+tracing-bunyan-formatter = "0.3.1"
+tracing-log = "0.2.0"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "registry"] }
+uuid = { version = "1", features = ["serde", "v4"] }
