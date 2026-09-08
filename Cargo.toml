@@ -26,3 +26,6 @@ tracing-bunyan-formatter = "0.3.1"
 tracing-log = "0.2.0"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "registry"] }
 uuid = { version = "1", features = ["serde", "v4"] }
+
+[dev-dependencies]
+reqwest = "0.13.4"

@@ -1,6 +1,6 @@
 use sqlx::{postgres::PgPoolOptions, PgConnection, PgPool};
 
-use crate::{config::DatabaseSettings, error::Result};
+use crate::{config::DatabaseSettings, error::Result, store::Store};
 
 #[derive(Clone)]
 pub struct AppState {
@@ -18,4 +18,10 @@ pub fn get_app_state(config: crate::config::Settings) -> Result<AppState> {
         pg_pool,
         hmac_secret: config.application.hmac_secret,
     })
+}
+
+impl<'a> AppState {
+    pub fn get_store(&'a self) -> Store<'a> {
+        Store::new(&self.pg_pool)
+    }
 }
